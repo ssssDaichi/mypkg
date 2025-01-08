@@ -1,0 +1,4 @@
+[console_scripts]
+battery_listener = mypkg.battery_listener:main
+battery_talker = mypkg.battery_talker:main
+
