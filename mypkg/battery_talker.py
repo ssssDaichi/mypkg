@@ -17,13 +17,12 @@ class BatteryTalker(Node):
     def publish_battery_percentage(self):
         battery = psutil.sensors_battery()
         if battery is not None:
-            status = f"{battery.percent}%"  # バッテリー残量のみを取得
+            status = f"{battery.percent}%"  # バッテリー残量
         else:
             status = "Battery information not available"
         msg = String()
         msg.data = status
-        self.publisher_.publish(msg)
-        self.get_logger().info(f"Published: {status}")
+        self.publisher_.publish(msg)  # トピックに送信
 
 def main(args=None):
     rclpy.init(args=args)
