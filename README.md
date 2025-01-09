@@ -1,19 +1,32 @@
-# ROS 2 DatetimeTalkerで現在日時を取得
-このROS 2パッケージは、DatetimeTalkerノードを使用して、システムの現在日時を定期的にパブリッシュします。
-### 概要
-DatetimeTalker: 毎秒現在日時を取得してパブリッシュします。
+# mypkg
+### パッケージ概要
+このROS 2パッケージは、`battery_talker.py`ノードを使用して、毎秒端末のバッテリー状況を表示します。
+### ノード概要
+`battery_talker.py`<br>毎秒端末のバッテリー状況を取得します。<br>取得したデータを`battery_status`トピックにパブリッシュします。
 
-DatetimeListener: 受信した日時を端末に出力します。
-#### ノードを実行する
-DatetimeTalkerとDatetimeListenerを起動するには以下を使用します。
+`battery_listener.py`<br>テスト用
+### 使用方法
+#### ノードの起動とデータの確認
+`battery_talker.py`の実行
 ```
-ros2 launch mypkg datetime_talk_listen.launch.py
+ros2 run mypkg battery_talker
 ```
-### 実行例
-以下はDatetimeTalkerとDatetimeListenerの実行例です：
+#### データの確認
+別の端末で以下を実行し、トピックのデータを表示します。
 ```
-[datetime_talker]: Published: 現在の日時: 2025-01-04 16:07:23
-[datetime_listener]: Listen: 現在の日時: 2025-01-04 16:07:23
+ros2 topic echo /battery_status
+```
+#### 出力例
+```
+data: 94.0%
+---
+data: 94.0%
+---
+data: 94.0%
+---
+data: 94.0%
+---
+data: 94.0%
 ```
 ### 動作環境
 Ubuntu 22.04 LTS
@@ -22,6 +35,6 @@ ROS 2 (Humble以降)
 
 Python 3.8以上
 #### ライセンス
-このリポジトリはBSD-3-Clauseライセンスのもとで公開されています。
+このリポジトリは3条項BSDライセンスの下で公開されています。<br>詳細はLICENSEをご確認ください。
 #### Copyright
 © 2025 Daichi Hirose
